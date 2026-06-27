@@ -1,0 +1,52 @@
+# References & Standards
+
+This document lists all standards, specifications, and libraries that informed the design and implementation of Cert-V2X.
+
+---
+
+## IEEE Standards
+
+**IEEE 1609.2-2016** — *IEEE Standard for Wireless Access in Vehicular Environments — Security Services for Applications and Management Messages*
+- Defines the V2X certificate format, COER-encoded ASN.1 data structures, PSID-based application permissions, Authorization Ticket structure, and the enrollment/authorization PKI flows.
+- Amendment: **IEEE 1609.2a-2017** — updated cryptographic algorithm support (ecdsaNistP256, ecdsaBrainpoolP256r1)
+- https://standards.ieee.org/ieee/1609.2/6085/
+
+---
+
+## ETSI Standards
+
+**ETSI TS 103 097 V1.3.1** — *Intelligent Transport Systems (ITS); Security; Security header and certificate formats*
+- EU equivalent of IEEE 1609.2 for ITS PKI. Defines `EtsiTs103097Certificate`, `EtsiTs103097Data`, and secure message profiles (CAM, DENM).
+- https://www.etsi.org/deliver/etsi_ts/103000_103099/103097/01.03.01_60/ts_103097v010301p.pdf
+
+**ETSI TS 102 941 V1.3.1** — *Intelligent Transport Systems (ITS); Security; Trust and Privacy Management*
+- Defines the ITS PKI message flows: Enrolment Request/Response, Authorization Request/Response, Authorization Validation, CRL/CTL generation.
+- https://www.etsi.org/deliver/etsi_ts/102900_102999/102941/01.03.01_60/ts_102941v010301p.pdf
+
+---
+
+## Open Source Libraries
+
+**c2c-common** — CGI SE Trusted Services
+- Java implementation of IEEE 1609.2 (US) and ETSI TS 103 097 / 102 941 (EU) V2X PKI data structures and generators.
+- Used as the core cryptographic library dependency in Cert-V2X.
+- License: AGPL-3.0
+- https://github.com/CGI-SE-Trusted-Services/c2c-common
+
+**Bouncy Castle**
+- JCE provider for ECDSA P-256 and Brainpool P-256r1 cryptographic operations, required by c2c-common.
+- License: MIT
+- https://www.bouncycastle.org/
+
+**Spring Boot 3**
+- REST API framework for the Cert-V2X service layer.
+- License: Apache 2.0
+- https://spring.io/projects/spring-boot
+
+---
+
+## Further Reading
+
+- ETSI ITS PKI Overview: https://www.etsi.org/technologies/automotive-intelligent-transport
+- V2X Security Architecture (C-ITS Platform): https://ec.europa.eu/transport/themes/its/c-its_en
+- PSID Registry (IEEE): https://standards.ieee.org/wp-content/uploads/import/documents/other/1609-2-psid-reg.pdf
